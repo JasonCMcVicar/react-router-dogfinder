@@ -29,13 +29,12 @@ function App() {
     return (<h1>Loading</h1>);
   }
 
-
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <Nav names={dogs.map(dog => dog.name)}/>
         <Routes>
-          <Route path="/dog/:name" element={<DogDetails />} />
+          <Route path="/dogs/:name" element={<DogDetails dogs={dogs}/>} />
           <Route path="/dogs" element={<DogList />} />
         </Routes>
       </BrowserRouter>
