@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Nav from "./Nav";
 import axios from "axios";
 import { useState } from "react";
@@ -35,7 +35,8 @@ function App() {
         <Nav names={dogs.map(dog => dog.name)}/>
         <Routes>
           <Route path="/dogs/:name" element={<DogDetails dogs={dogs}/>} />
-          <Route path="/dogs" element={<DogList />} />
+          <Route path="/dogs" element={<DogList dogs={dogs}/>} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     </div>
